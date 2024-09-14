@@ -1,6 +1,7 @@
 package com.example.lab1_calcularor.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +15,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lab1_calcularor.R;
 import com.example.lab1_calcularor.entities.UserData;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
-//Новый метод из onCreate, который будет смотреть: регался ли юзер или не регался. Если регался, то в
-//переход в LOG IN, иначе - REGISTRATION. Для этого создать класс, который будет сохранять и загружатьы инфу юзера.
 
     EditText phoneNumber;
     EditText name;
@@ -38,11 +38,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void auth(){
+        Button authButton = findViewById(R.id.registrationButton);
+
         phoneNumber = findViewById(R.id.userPhoneNumber);
         name = findViewById(R.id.userName);
         surname = findViewById(R.id.userSurname);
 
-        Button authButton = findViewById(R.id.registrationButton);
+        UserData user = getUser();
+        if (user != null){
+            authButton.setText("LOG IN");
+        }else{
+            authButton.setText("REGISTRATION");
+        }
+
+        if (user != null){
+            phoneNumber.setText(user.getPhone());
+            name.setText(user.getName());
+            surname.setText(user.getSurname());
+        }
+
         authButton.setOnClickListener(this::handleAuthClick);
     }
 
@@ -54,10 +68,32 @@ public class MainActivity extends AppCompatActivity {
         if (userPhoneNumber.isEmpty() || userName.isEmpty() || userSurname.isEmpty()) return;
 
         UserData user = new UserData(userPhoneNumber, userName, userSurname);
+        saveUser(user);
 
         Intent intent = new Intent(this, PersonalPageActivity.class);
-        intent.putExtra(UserData.class.getSimpleName(), user);
         startActivity(intent);
+
     }
 
+    private void saveUser(UserData user){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+
+        editor.putString("user", json);
+        editor.apply();
+    }
+
+    private UserData getUser(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+        String json = sharedPreferences.getString("user", null);
+
+        Gson gson = new Gson();
+        UserData user = gson.fromJson(json, UserData.class);
+
+        return user;
+    }
 }

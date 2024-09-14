@@ -38,6 +38,8 @@ public class RouteActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        route();
     }
 
     private void route(){
