@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/registerPage"
+    android:id="@+id/authPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2da79"
@@ -67,15 +66,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/registrationButton"
+        android:id="@+id/authorizationButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="REGISTRATION"
+        android:text="LOG IN"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
         android:textColor="#ffffff"
         app:layout_constraintTop_toBottomOf="@id/userSurname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

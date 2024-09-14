@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/routePage"
+    android:background="#f2da79"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/pointFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Point From"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:paddingBottom="15dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/streetLabelFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Street"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/pointFrom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/streetFrom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="PointA"
+        app:layout_constraintTop_toBottomOf="@id/streetLabelFrom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/houseLabelFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="House"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/streetFrom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/houseFrom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="1a"
+        app:layout_constraintTop_toBottomOf="@id/houseLabelFrom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/flatLabelFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flat"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/houseFrom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/flatFrom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="1"
+        app:layout_constraintTop_toBottomOf="@id/flatLabelFrom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/pointTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Point To"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/flatFrom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/streetLabelTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Street"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/pointTo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/streetTo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="PointB"
+        app:layout_constraintTop_toBottomOf="@id/streetLabelTo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/houseLabelTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="House"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/streetTo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/houseTo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="2b"
+        app:layout_constraintTop_toBottomOf="@id/houseLabelTo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/flatLabelTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flat"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/houseTo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/flatTo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="b"
+        app:layout_constraintTop_toBottomOf="@id/flatLabelTo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_background"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toBottomOf="@id/flatTo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
