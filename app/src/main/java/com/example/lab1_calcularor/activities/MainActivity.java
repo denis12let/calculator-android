@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, PersonalPageActivity.class);
         startActivity(intent);
-
     }
 
     private void saveUser(UserData user){
