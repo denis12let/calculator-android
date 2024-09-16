@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ProductsObserver,
         View.OnClickListener {
+
     private LinearLayout linearLayout;
     private LayoutInflater layoutInflater;
     ListView listView;
