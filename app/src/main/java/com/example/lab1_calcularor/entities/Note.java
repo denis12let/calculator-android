@@ -2,11 +2,11 @@ package com.example.lab1_calcularor.entities;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Note implements Serializable {
     private int id;
     private String name;
 
-    public Product(int id, String name) {
+    public Note(int id, String name) {
         this.id = id;
         this.name = name;
     }

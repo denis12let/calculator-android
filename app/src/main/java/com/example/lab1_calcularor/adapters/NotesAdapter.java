@@ -10,15 +10,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.lab1_calcularor.R;
-import com.example.lab1_calcularor.entities.Product;
+import com.example.lab1_calcularor.entities.Note;
 
 
-public class ProductsAdapter extends BaseAdapter {
+public class NotesAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Product> productsAdapter = new ArrayList<>();
+    private ArrayList<Note> productsAdapter = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
-    public ProductsAdapter(Context context, ArrayList<Product> productsAdapter) {
+    public NotesAdapter(Context context, ArrayList<Note> productsAdapter) {
         this.context = context;
         this.productsAdapter = productsAdapter;
         layoutInflater = LayoutInflater.from(context);
@@ -43,7 +43,7 @@ public class ProductsAdapter extends BaseAdapter {
     public View getView(int pos, View view, ViewGroup viewGroup) {
         view = (view == null) ? layoutInflater.inflate(R.layout.note_item, null, false) : view;
 
-        Product productTemp = productsAdapter.get(pos);
+        Note productTemp = productsAdapter.get(pos);
 
         TextView productId = view.findViewById(R.id.itemId);
         productId.setText(Integer.toString(productTemp.getId()));

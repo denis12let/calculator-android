@@ -3,13 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#543"
-    tools:context=".UpdateFragment">
+    android:background="#d2d6d3"
+    tools:context=".fragments.UpdateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="145dp"
+        android:textSize="30dp"
+        android:text="Изменение заметки"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/buttonUpdateNote"
+        android:layout_width="110dp"
+        android:layout_height="66dp"
+        android:textSize="16dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="60dp"
+        android:text="Update" />
+
+    <EditText
+        android:id="@+id/updateID"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="270dp"
+        android:hint="Новое название"
+        android:inputType="text"></EditText>
+
+    <EditText
+        android:id="@+id/updateName"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="50dp"
+        android:hint="Номер заметки"
+        android:inputType="number"
+        ></EditText>
 
 </FrameLayout>

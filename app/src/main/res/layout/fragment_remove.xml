@@ -3,13 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#978235"
-    tools:context=".RemoveFragment">
+    android:background="#d2d6d3"
+    tools:context=".fragments.RemoveFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="145dp"
+        android:textSize="30dp"
+        android:text="Удаление заметки"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/buttonRemoveNote"
+        android:layout_width="110dp"
+        android:layout_height="66dp"
+        android:textSize="16dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="60dp"
+        android:text="Remove" />
+
+    <EditText
+        android:id="@+id/removeId"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="50dp"
+        android:hint="Номер заметки"
+        android:inputType="number"
+        ></EditText>
 
 </FrameLayout>

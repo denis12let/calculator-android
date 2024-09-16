@@ -1,6 +1,5 @@
-package com.example.lab1_calcularor;
+package com.example.lab1_calcularor.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,16 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.lab1_calcularor.adapters.ProductsAdapter;
-import com.example.lab1_calcularor.entities.Product;
+import com.example.lab1_calcularor.R;
+import com.example.lab1_calcularor.adapters.NotesAdapter;
+import com.example.lab1_calcularor.entities.Note;
 
 import java.util.ArrayList;
 
 public class ShowFragment extends Fragment {
 
     private ListView listView;
-    private ProductsAdapter productsAdapter;
-    private ArrayList<Product> products = new ArrayList<>();
+    private NotesAdapter productsAdapter;
+    private ArrayList<Note> products = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +30,7 @@ public class ShowFragment extends Fragment {
         setListView(view);
         createViews();
 
-        productsAdapter = new ProductsAdapter(getContext(), products);
+        productsAdapter = new NotesAdapter(getContext(), products);
         listView.setAdapter(productsAdapter);
 
         return view;
@@ -38,7 +38,7 @@ public class ShowFragment extends Fragment {
 
     private void createViews(){
         for (int i = 0; i < 50; i++){
-            products.add(new Product(i, String.format("   item%d", i)));
+            products.add(new Note(i, String.format("   item%d", i)));
         }
     }
 

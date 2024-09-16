@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.lab1_calcularor.AddFragment;
-import com.example.lab1_calcularor.RemoveFragment;
-import com.example.lab1_calcularor.ShowFragment;
-import com.example.lab1_calcularor.UpdateFragment;
+import com.example.lab1_calcularor.fragments.AddFragment;
+import com.example.lab1_calcularor.fragments.RemoveFragment;
+import com.example.lab1_calcularor.fragments.ShowFragment;
+import com.example.lab1_calcularor.fragments.UpdateFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
