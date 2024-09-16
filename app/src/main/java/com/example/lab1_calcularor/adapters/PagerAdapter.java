@@ -11,6 +11,9 @@ import com.example.lab1_calcularor.ShowFragment;
 import com.example.lab1_calcularor.UpdateFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
+
+    static final int FRAGMENTS_COUNT = 4;
+
     public PagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
@@ -34,6 +37,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4; // Общее количество фрагментов
+        return FRAGMENTS_COUNT;
     }
 }
