@@ -3,6 +3,8 @@ package com.example.lab1_calcularor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ public class CartActivity extends AppCompatActivity {
     private LayoutInflater layoutInflater;
     private LinearLayout linearLayout;
     ListView listView;
+    TextView textCountChecked;
     private ArrayList<Product> products;
 
     @Override
@@ -33,10 +36,14 @@ public class CartActivity extends AppCompatActivity {
         showProduct();
     }
 
-    private void showProduct(){
+    private void showProduct() {
+        textCountChecked = findViewById(R.id.productCardProducts);
         int productsArrSize = products.size();
-        for (int i = 0; i < productsArrSize; i++){
-            if (products.get(i).isCheck()){
+        int countProductsChecked = 0;
+
+        for (int i = 0; i < productsArrSize; i++) {
+            if (products.get(i).isCheck()) {
+                countProductsChecked++;
                 View viewProduct = layoutInflater.inflate(R.layout.catalog_card, linearLayout, false);
 
                 TextView itemId = viewProduct.findViewById(R.id.itemId);
@@ -45,9 +52,15 @@ public class CartActivity extends AppCompatActivity {
                 TextView itemName = viewProduct.findViewById(R.id.itemName);
                 itemName.setText(products.get(i).getName());
 
+                CheckBox itemCheckBox = viewProduct.findViewById(R.id.itemCheckBox);
+
+                ((ViewGroup) itemCheckBox.getParent()).removeView(itemCheckBox);
+
                 linearLayout.addView(viewProduct);
             }
         }
+
+        textCountChecked.setText("Количество продуктов в корзине: " + countProductsChecked);
     }
 
     private void getProducts(){
