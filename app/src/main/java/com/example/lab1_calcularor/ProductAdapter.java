@@ -15,10 +15,13 @@ public class ProductAdapter extends BaseAdapter implements CompoundButton.OnChec
     private Context context;
     private ArrayList<Product> productsAdapter;
     private LayoutInflater layoutInflater;
+    private ArrayList<Product> selectedProductsAdapter = new ArrayList<>();
+    private ProductsObserver productsObserver;
 
-    public ProductAdapter(Context context, ArrayList<Product> productsAdapter) {
+    public ProductAdapter(Context context, ArrayList<Product> productsAdapter, ProductsObserver productsObserver) {
         this.context = context;
         this.productsAdapter = productsAdapter;
+        this.productsObserver = productsObserver;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -64,6 +67,18 @@ public class ProductAdapter extends BaseAdapter implements CompoundButton.OnChec
             int tag = (int) compoundButton.getTag();
             productsAdapter.get(tag).setCheck(isChecked);
             notifyDataSetChanged();
+
+            if (isChecked){
+                selectedProductsAdapter.add(productsAdapter.get(tag));
+            }else{
+                selectedProductsAdapter.remove(productsAdapter.get(tag));
+            }
+
+            productsObserver.onDataChanged();
         }
+    }
+
+    public ArrayList<Product> getSelectedProductsAdapter() {
+        return selectedProductsAdapter;
     }
 }
