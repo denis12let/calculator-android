@@ -6,24 +6,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements ProductsObserver,
-        View.OnClickListener {
-    private LinearLayout linearLayout;
-    private LayoutInflater layoutInflater;
-    ListView listView;
-    ArrayList<Product> products = new ArrayList<Product>();
-    private TextView checkedProductsView;
+public class MainActivity extends AppCompatActivity {
+    private Button btnShow, btnAdd, btnRemove, btnUpdate;
+    private FrameLayout fl;
 
-    private ProductAdapter productAdapter;
-    private final int LIST_SIZE = 50;
+    ShowFragment showFragment = new ShowFragment();
+    RemoveFragment removeFragment = new RemoveFragment();
+    AddFragment addFragment = new AddFragment();
+    UpdateFragment updateFragment = new UpdateFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,60 +35,21 @@ public class MainActivity extends AppCompatActivity implements ProductsObserver,
     }
 
     private void init(){
-        layoutInflater = LayoutInflater.from(this);
+        btnShow = findViewById(R.id.buttonShow);
+        btnAdd = findViewById(R.id.buttonAdd);
+        btnRemove = findViewById(R.id.buttonRemove);
+        btnUpdate = findViewById(R.id.buttonUpdate);
 
-        setupListView();
-        createViews();
+        btnShow.setOnClickListener(v -> setNewFragment(showFragment));
+        btnAdd.setOnClickListener(v -> setNewFragment(addFragment));
+        btnRemove.setOnClickListener(v -> setNewFragment(removeFragment));
+        btnUpdate.setOnClickListener(v -> setNewFragment(updateFragment));
 
-        View viewHeader = initHeader(layoutInflater);
-        View viewFooter = initFooter(layoutInflater);
-
-        listView.addHeaderView(viewHeader);
-        listView.addFooterView(viewFooter);
-
-        checkedProductsView = findViewById(R.id.productCardProducts);
-
-        productAdapter = new ProductAdapter(this, products, this);
-
-        listView.setAdapter(productAdapter);
     }
 
-    private void setupListView(){
-        listView = findViewById(R.id.listView);
-    }
-
-    private View initHeader(LayoutInflater layoutInflater){
-        View viewHeader = layoutInflater.inflate(R.layout.shop_header, null);
-        return viewHeader;
-    }
-
-    private View initFooter(LayoutInflater layoutInflater){
-        View viewFooter = layoutInflater.inflate(R.layout.shop_footer, null);
-
-        Button cardButton = viewFooter.findViewById(R.id.showCheckedItemsButton);
-        cardButton.setOnClickListener(this);
-
-        return viewFooter;
-    }
-
-    private void createViews(){
-        for (int i = 0; i < LIST_SIZE; i++){
-            products.add(new Product(i, String.format("# item%d", i), false));
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(this, CartActivity.class);
-        intent.putExtra(Product.class.getSimpleName(), products);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onDataChanged() {
-        int countOfCheckedProducts = productAdapter.getSelectedProductsAdapter().size();
-
-        checkedProductsView.setText(Integer.toString(countOfCheckedProducts));
-
+    private void setNewFragment(Fragment fragment){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragmentContainer, fragment);
+        ft.commit();
     }
 }
