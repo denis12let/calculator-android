@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.lab1_calcularor.R;
 import com.example.lab1_calcularor.adapters.NotesAdapter;
+import com.example.lab1_calcularor.database.DatabaseHelper;
 import com.example.lab1_calcularor.entities.Note;
 
 import java.util.ArrayList;
@@ -20,26 +21,22 @@ public class ShowFragment extends Fragment {
     private ListView listView;
     private NotesAdapter productsAdapter;
     private ArrayList<Note> products = new ArrayList<>();
-
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_show, container, false);
-
         setListView(view);
-        createViews();
-
-        productsAdapter = new NotesAdapter(getContext(), products);
-        listView.setAdapter(productsAdapter);
-
+        loadNotes();
         return view;
     }
 
-    private void createViews(){
-        for (int i = 0; i < 50; i++){
-            products.add(new Note(i, String.format("   item%d", i)));
-        }
+    private void loadNotes() {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        products = databaseHelper.getAllNotes();
+
+        productsAdapter = new NotesAdapter(getContext(), products);
+        listView.setAdapter(productsAdapter);
     }
 
     private void setListView(View view){
